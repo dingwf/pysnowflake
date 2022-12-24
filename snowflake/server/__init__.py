@@ -25,6 +25,7 @@ define("address", default='localhost', help="run on the given address", type=str
 define("port", default=8910, help="run on the given port", type=int)
 define("dc", default=_PSF_DC, help="Datacenter Identifier", type=int)
 define("worker", default=_PSF_WORKER, help="Worker Identifier", type=int)
+define("url", default="", help="Url Prefix", type=str)
 
 
 class IDHandler(tornado.web.RequestHandler):
@@ -49,6 +50,9 @@ class SnowflakeApplication(tornado.web.Application):
             (r'/', IDHandler),
             (r'/stats', StatsHandler),
         ]
+        if options.urlprefix:
+            handlers.append((options.url, IDHandler))
+
         settings = {
             'debug': options.debug,
         }

@@ -13,7 +13,7 @@ requires = [
     'tornado',
     ]
 
-setup(name='pysnowflake',
+setup(name='pysnowflake3',
       version='0.1.3',
       description='Python Snowflake Kit',
       long_description=README,
